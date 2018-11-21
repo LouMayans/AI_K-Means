@@ -1,0 +1,7 @@
+C:\Users\Lou\Documents\Stuff\School Projects Homework Slides etc\CS Artificial Intelligence\AI_K-Means\AI_K-Means\bin\Debug\AI_K-Means.exe.config
+C:\Users\Lou\Documents\Stuff\School Projects Homework Slides etc\CS Artificial Intelligence\AI_K-Means\AI_K-Means\bin\Debug\AI_K-Means.exe
+C:\Users\Lou\Documents\Stuff\School Projects Homework Slides etc\CS Artificial Intelligence\AI_K-Means\AI_K-Means\bin\Debug\AI_K-Means.pdb
+C:\Users\Lou\Documents\Stuff\School Projects Homework Slides etc\CS Artificial Intelligence\AI_K-Means\AI_K-Means\obj\Debug\AI_K-Means.csprojAssemblyReference.cache
+C:\Users\Lou\Documents\Stuff\School Projects Homework Slides etc\CS Artificial Intelligence\AI_K-Means\AI_K-Means\obj\Debug\AI_K-Means.csproj.CoreCompileInputs.cache
+C:\Users\Lou\Documents\Stuff\School Projects Homework Slides etc\CS Artificial Intelligence\AI_K-Means\AI_K-Means\obj\Debug\AI_K-Means.exe
+C:\Users\Lou\Documents\Stuff\School Projects Homework Slides etc\CS Artificial Intelligence\AI_K-Means\AI_K-Means\obj\Debug\AI_K-Means.pdb
