@@ -10,7 +10,7 @@ namespace AI_K_Means
 
     public class Cluster
     {
-        List<ClusterStack> clusterStack;
+        //List<ClusterStack> clusterStack;
         public int clusterIndex;
         public Vector2 center;
         public Point[] points;
@@ -21,31 +21,31 @@ namespace AI_K_Means
         {
             points = allPoints;
             pointsInCluster = new List<Point>();
-            clusterStack = new List<ClusterStack>();
+            //clusterStack = new List<ClusterStack>();
         }
+
+        //gets the shortest distance point from current cluster
         public int getShortestDistance(float threshold)
         {
             CalculateNewDistances();
 
-            float distance = -1;
-            int shortest = -1;
+            float distance = distanceToPoints[0];
+            int shortestIndex = -1;
 
             for (int i = 0; i < distanceToPoints.Count; i++)
             {
+                //checks if its less than threshold and not negative
                 if (distanceToPoints[i] <= threshold && distanceToPoints[i] >= 0)
                 {
-                    if (distance < 0)
+                    if (distanceToPoints[i] < distance)
+                    {
                         distance = distanceToPoints[i];
-                    else if (distanceToPoints[i] < distance)
-                        distance = distanceToPoints[i];
-                    else
-                        continue;
-
-                    shortest = i;
+                        shortestIndex = i;
+                    }
                 }
             }
 
-            return shortest;
+            return shortestIndex;
         }
 
         public bool addPoint(float threshold)
@@ -57,8 +57,10 @@ namespace AI_K_Means
 
             pointsInCluster.Add(points[index]);
             points[index].cluster = this;
+
             Console.WriteLine("Point {3} [{0},{1}] added to Cluster {2}", points[index].position.X, points[index].position.Y, clusterIndex, points[index].index + 1);
-            clusterStack.Add(new ClusterStack(ClusterAction.Add, points[index]));
+            //clusterStack.Add(new ClusterStack(ClusterAction.Add, points[index]));
+
             CalculateCenter();
 
             return true;
@@ -74,8 +76,9 @@ namespace AI_K_Means
                 {
                     pointsInCluster[i].cluster = null;
                     pointsInCluster.Remove(pointsInCluster[i]);
+
                     Console.WriteLine("Point {3} [{0},{1}] removed from Cluster {2}", pointsInCluster[i].position.X, pointsInCluster[i].position.Y, clusterIndex, pointsInCluster[i].index + 1);
-                    clusterStack.Add(new ClusterStack(ClusterAction.Remove, pointsInCluster[i]));
+                    //clusterStack.Add(new ClusterStack(ClusterAction.Remove, pointsInCluster[i]));
                     CalculateCenter();
                     removed = true;
                     i = 0;
@@ -83,13 +86,18 @@ namespace AI_K_Means
             }
             return removed;
         }
+
+        //goes through the list of points and calculates the new distances
         public void CalculateNewDistances()
         {
             for (int i = 0; i < points.GetLength(0); i++)
             {
+                //if distanceToPoints array is too small
                 if (distanceToPoints.Count <= i)
                     distanceToPoints.Add(new float());
 
+                //if point is not already part of a cluster then assign the distance
+                //else distance is -1
                 if (points[i].cluster == null)
                     distanceToPoints[i] = Vector2.Distance(center, points[i].position);
                 else
@@ -105,7 +113,7 @@ namespace AI_K_Means
                 y += point.position.Y;
             }
             center = new Vector2(x / pointsInCluster.Count, y / pointsInCluster.Count);
-            clusterStack.Add(new ClusterStack(ClusterAction.Centroid, center));
+            //clusterStack.Add(new ClusterStack(ClusterAction.Centroid, center));
             CalculateNewDistances();
             Console.WriteLine("----New Cluster {0} centroid is [{1},{2}]", clusterIndex, center.X, center.Y);
         }

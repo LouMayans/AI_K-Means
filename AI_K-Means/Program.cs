@@ -11,16 +11,18 @@ namespace AI_K_Means
     {
         static void Main(string[] args)
         {
+            //Generates points
             Point[] points = PointsGenerator.GeneratePoints(15,5,5);
             float threshold = 2;
 
+            //Writes the lines to the Console
             for (int i = 0; i < points.GetLength(0); i++)
-            {
                 Console.WriteLine("Point " + (i+1) + " = [{0},{1}] ", points[i].position.X, points[i].position.Y);
-            }
 
+            //Actually does the clustering
             Cluster[] clusters = K_Means.Cluster(points,2, threshold);
 
+            //Console write the clusters and its points and distance to the centroid
             Console.WriteLine("\nthreshold = {0}", threshold);
             for (int clusterIndex = 0; clusterIndex < clusters.GetLength(0); clusterIndex++)
             {
